@@ -1,13 +1,7 @@
-FROM node:14-alpine
+FROM nginx:stable-alpine
 
-WORKDIR /app
+WORKDIR /etc/nginx
 
-COPY package*.json ./
+COPY cert.pem .
 
-RUN npm i
-
-COPY . .
-
-EXPOSE 3000
-
-CMD npm start
+COPY cert.key .
